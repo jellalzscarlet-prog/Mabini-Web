@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member List | Mabini</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="members.css">
+</head>
+<body>
+
+<div class="members-page">
+
+    <header class="members-header">
+        <a href="officials.html" class="back-button">← Back to Officials</a>
+
+        <h1 id="groupTitle">Member List</h1>
+        <p>Municipality of Mabini, Pangasinan</p>
+    </header>
+
+    <main class="members-container">
+
+        <div class="spreadsheet-toolbar">
+            <div>
+                <h2>Member Records</h2>
+                <p>Edit the table like a spreadsheet.</p>
+            </div>
+
+            <div class="toolbar-buttons">
+                <button id="addRowBtn">+ Add Row</button>
+                <button id="saveBtn">Save Changes</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="memberTable">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Remarks</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="memberTableBody"></tbody>
+            </table>
+        </div>
+
+        <p class="save-status" id="saveStatus">Changes saved locally</p>
+
+    </main>
+
+</div>
+
+<script src="members.js"></script>
+</body>
+</html>
