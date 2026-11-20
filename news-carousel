@@ -1,21 +1,21 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-
     const carousel = document.getElementById("newsCarousel");
 
     if (!carousel) return;
 
     const slides = carousel.querySelectorAll(".news-slide");
     const dots = carousel.querySelectorAll(".news-dot");
+    const prev = document.getElementById("newsPrev");
+    const next = document.getElementById("newsNext");
 
-    const previousButton = document.getElementById("newsPrev");
-    const nextButton = document.getElementById("newsNext");
+    if (slides.length === 0 || !prev || !next) {
+        console.error("Carousel elements are missing.");
+        return;
+    }
 
     let currentSlide = 0;
-    let autoSlide;
 
     function showSlide(index) {
-
         currentSlide = (index + slides.length) % slides.length;
 
         slides.forEach((slide, i) => {
@@ -27,41 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
-
-    function previousSlide() {
-        showSlide(currentSlide - 1);
-    }
-
-    function startAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(nextSlide, 5000);
-    }
-
-    function resetAutoSlide() {
-        startAutoSlide();
-    }
-
-    nextButton.addEventListener("click", function () {
-        nextSlide();
-        resetAutoSlide();
-    });
-
-    previousButton.addEventListener("click", function () {
-        previousSlide();
-        resetAutoSlide();
-    });
+    prev.addEventListener("click", () => showSlide(currentSlide - 1));
+    next.addEventListener("click", () => showSlide(currentSlide + 1));
 
     dots.forEach((dot, index) => {
-        dot.addEventListener("click", function () {
-            showSlide(index);
-            resetAutoSlide();
-        });
+        dot.addEventListener("click", () => showSlide(index));
     });
 
     showSlide(0);
-    startAutoSlide();
-
 });
