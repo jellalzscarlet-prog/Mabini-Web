@@ -182,26 +182,84 @@
 
         </section>
 
-        <!-- NEWS -->
-        <section id="news" class="section pale">
+        
+<!-- NEWS & EVENTS CAROUSEL -->
+<section id="news" class="section pale">
 
-            <div class="section-heading">
-                <p class="eyebrow green">FROM OUR COMMUNITY</p>
-                <h2>News & Community Events</h2>
-            </div>
+    <div class="section-heading">
+        <p class="eyebrow green">FROM OUR COMMUNITY</p>
+        <h2>News & Community Events</h2>
+    </div>
 
-            <div class="news-feature">
+    <div class="news-carousel" id="newsCarousel">
 
+        <div class="news-slides">
+
+            <!-- SLIDE 1 -->
+            <article class="news-slide active">
                 <img src="images/community-event.jpg"
                      alt="Community event in Mabini">
 
-                <div>
+                <div class="news-slide-content">
+                    <p class="eyebrow green">COMMUNITY NEWS</p>
                     <h3>Community Activities</h3>
-                    <p>Photos from local community activities and events.</p>
+                    <p>Photos and updates from local community activities and events.</p>
                 </div>
+            </article>
 
-            </div>
-        </section>
+            <!-- SLIDE 2 -->
+            <article class="news-slide">
+                <img src="images/community-event.jpg"
+                     alt="Municipal activity in Mabini">
+
+                <div class="news-slide-content">
+                    <p class="eyebrow green">MUNICIPAL UPDATES</p>
+                    <h3>Municipal Programs</h3>
+                    <p>Updates about programs and activities serving our community.</p>
+                </div>
+            </article>
+
+            <!-- SLIDE 3 -->
+            <article class="news-slide">
+                <img src="images/community-event.jpg"
+                     alt="Local event in Mabini">
+
+                <div class="news-slide-content">
+                    <p class="eyebrow green">LOCAL EVENTS</p>
+                    <h3>Events in Mabini</h3>
+                    <p>Discover events and activities happening in our municipality.</p>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- PREVIOUS / NEXT BUTTONS -->
+        <button class="news-arrow news-prev"
+                id="newsPrev"
+                aria-label="Previous slide">
+            &#10094;
+        </button>
+
+        <button class="news-arrow news-next"
+                id="newsNext"
+                aria-label="Next slide">
+            &#10095;
+        </button>
+
+        <!-- NAVIGATION DOTS -->
+        <div class="news-dots" id="newsDots">
+            <button class="news-dot active" data-slide="0"
+                    aria-label="Go to slide 1"></button>    
+            <button class="news-dot" data-slide="1"
+                    aria-label="Go to slide 2"></button>
+            <button class="news-dot" data-slide="2"
+                    aria-label="Go to slide 3"></button>
+        </div>
+
+    </div>
+
+</section>
+
 
         <!-- CONTACT -->
         <section id="contact" class="section contact">
@@ -278,6 +336,6 @@
 </div>
 
 <script src="script.js"></script>
-
+<script src="news-carousel.js"></script>
 </body>
 </html>
