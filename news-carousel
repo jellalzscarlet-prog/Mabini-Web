@@ -1,15 +1,22 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const carousel = document.getElementById("newsCarousel");
 
     if (!carousel) return;
 
-    const slides = carousel.querySelectorAll(".news-slide");
-    const dots = carousel.querySelectorAll(".news-dot");
-    const prev = document.getElementById("newsPrev");
-    const next = document.getElementById("newsNext");
+    const slides = Array.from(
+        carousel.querySelectorAll(".news-slide")
+    );
 
-    if (slides.length === 0 || !prev || !next) {
-        console.error("Carousel elements are missing.");
+    const dots = Array.from(
+        carousel.querySelectorAll(".news-dot")
+    );
+
+    const prevButton = document.getElementById("newsPrev");
+    const nextButton = document.getElementById("newsNext");
+
+    if (!slides.length || !prevButton || !nextButton) {
+        console.error("News carousel elements are missing.");
         return;
     }
 
@@ -19,19 +26,32 @@ document.addEventListener("DOMContentLoaded", function () {
         currentSlide = (index + slides.length) % slides.length;
 
         slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === currentSlide);
+            const active = i === currentSlide;
+
+            slide.classList.toggle("active", active);
+            slide.setAttribute("aria-hidden", String(!active));
         });
 
         dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentSlide);
+            const active = i === currentSlide;
+
+            dot.classList.toggle("active", active);
+            dot.setAttribute("aria-current", active ? "true" : "false");
         });
     }
 
-    prev.addEventListener("click", () => showSlide(currentSlide - 1));
-    next.addEventListener("click", () => showSlide(currentSlide + 1));
+    prevButton.addEventListener("click", function () {
+        showSlide(currentSlide - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        showSlide(currentSlide + 1);
+    });
 
     dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => showSlide(index));
+        dot.addEventListener("click", function () {
+            showSlide(index);
+        });
     });
 
     showSlide(0);
