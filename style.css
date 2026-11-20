@@ -752,3 +752,17 @@ body {
         min-width: 650px;
     }
 }
+/* Logos and seals: show the whole image instead of cropping it */
+.card img.logo {
+    object-fit: contain;
+    object-position: center;
+    padding: 20px;
+    background: #fff;
+}
+
+/* Keep the 3-column grid on desktop, 2 on tablet, 1 on phone */
+@media (max-width: 900px) and (min-width: 701px) {
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
