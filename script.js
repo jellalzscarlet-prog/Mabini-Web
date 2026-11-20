@@ -150,3 +150,63 @@ addRowBtn.addEventListener("click", () => {
 
 // Save button
 saveBtn.addEventListener("click", saveMembers);
+
+//New & Events Carousel
+
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.getElementById("newsCarousel");
+
+    if (!carousel) return;
+
+    const slides = Array.from(
+        carousel.querySelectorAll(".news-slide")
+    );
+
+    const dots = Array.from(
+        carousel.querySelectorAll(".news-dot")
+    );
+
+    const prevButton = document.getElementById("newsPrev");
+    const nextButton = document.getElementById("newsNext");
+
+    if (!slides.length || !prevButton || !nextButton) {
+        console.error("News carousel elements are missing.");
+        return;
+    }
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+            const active = i === currentSlide;
+
+            slide.classList.toggle("active", active);
+            slide.setAttribute("aria-hidden", String(!active));
+        });
+
+        dots.forEach((dot, i) => {
+            const active = i === currentSlide;
+
+            dot.classList.toggle("active", active);
+            dot.setAttribute("aria-current", active ? "true" : "false");
+        });
+    }
+
+    prevButton.addEventListener("click", function () {
+        showSlide(currentSlide - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        showSlide(currentSlide + 1);
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", function () {
+            showSlide(index);
+        });
+    });
+
+    showSlide(0);
+});
